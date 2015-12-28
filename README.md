@@ -1,29 +1,21 @@
-## What is Frontik?
+git clone https://github.com/hhru/frontik hh_git_2a
 
-Frontik is an asyncronous Tornado-based application server. It was designed to support simple xml aggregation with xsl
-transformation, but supports other content types as well.
+cd hh_git_2a
 
-Frontik was originally developed by Andrey Tatarinov at [hh.ru](http://hh.ru/) as a part of infrastructure development tasks.
+git subtree split -P frontik/testing/ -b testing
 
-## Documentation
+cd ..
 
-* [Running Frontik](/docs/running.md)
-* [Configuring Frontik](/docs/config.md)
-* [Frontik application structure](/docs/frontik-app.md)
-* [Configuring Frontik application](/docs/config-app.md)
-* [Routing — TBA](/docs/routing.md)
-* [Service ulrs](/docs/service-urls.md)
-* [Page generation process](/docs/page-generation.md)
-* [Preprocessors](/docs/preprocessors.md)
-* [Making HTTP requests](/docs/http-client.md)
-* [Content types and producers](/docs/producers.md)
-* [Postprocessing](/docs/postprocessing.md)
-* [Debugging Frontik](/docs/debug.md)
+mkdir hh_git_2b
 
-## Examples
+git init
 
-See [/examples](/examples) directory for simple Frontik application example.
+cd hh_git_2b
 
-## Usages
+git init
 
-  * All pages of [hh.ru](http://hh.ru/) are served with Frontik
+git pull ../hh_git_2a/ testing
+
+cd ../hh_git_2a
+
+git filter-branch --prune-empty --tree-filter 'rm -rf frontik/testing' HEAD
